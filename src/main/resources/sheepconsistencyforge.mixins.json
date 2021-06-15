@@ -1,0 +1,10 @@
+{
+  "required": true,
+  "package": "me.jsb.sheepconsistencyforge.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "sheepconsistencyforge.mixins.json",
+  "mixins": [
+	"SheepRendererMixin"
+  ],
+  "minVersion": "0.8"
+}
