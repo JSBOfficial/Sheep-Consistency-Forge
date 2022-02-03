@@ -20,7 +20,7 @@ public class SheepShearedLayerRenderer extends LayerRenderer<SheepEntity, SheepM
 	}
 	
 	@Override
-	   public void render(MatrixStack matrixStack, IRenderTypeBuffer vertexConsumerProvider, int i, SheepEntity sheepEntity, float f, float g, float h, float j, float k, float l) {
+    public void render(MatrixStack matrixStack, IRenderTypeBuffer vertexConsumerProvider, int i, SheepEntity sheepEntity, float f, float g, float h, float j, float k, float l) {
         float v;
         float w;
         float x;

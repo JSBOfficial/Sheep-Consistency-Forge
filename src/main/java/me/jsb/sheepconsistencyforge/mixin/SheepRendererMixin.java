@@ -23,7 +23,7 @@ public abstract class SheepRendererMixin extends MobRenderer<SheepEntity, SheepM
 	}
 
 	@Inject(at = @At ("TAIL"), method = "<init>(Lnet/minecraft/client/renderer/entity/EntityRendererManager;)V")
-	private void init(EntityRendererManager dispatcher, CallbackInfo info) {
+	private void sheep_consistency_forge_init(EntityRendererManager dispatcher, CallbackInfo info) {
 		this.addLayer(new SheepShearedLayerRenderer(this));
 	}
 }
