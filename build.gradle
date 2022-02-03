@@ -17,7 +17,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
 mixin {
-    add sourceSets.main, "sheepconsistencyforge.mixins.json"
+    add sourceSets.main, "sheepconsistencyforge.refmap.json"
 }
 
 
@@ -97,6 +97,8 @@ minecraft {
 
         data {
             workingDirectory project.file('run')
+            properties 'mixin.env.remapRefMap': 'true'
+            property 'mixin.env.refMapRemappingFile', "${project.projectDir}/build/createSrgToMcp/output.srg"
 
             // Recommended logging data for a userdev environment
             // The markers can be changed as needed. 
@@ -109,6 +111,7 @@ minecraft {
             // You can set various levels here.
             // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             property 'forge.logging.console.level', 'debug'
+
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
             args '--mod', 'sheepconsistencyforge', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
