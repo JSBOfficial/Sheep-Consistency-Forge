@@ -5,25 +5,25 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import me.jsb.sheepconsistencyforge.client.SheepShearedLayerRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererManager;
+import me.jsb.sheepconsistencyforge.client.SheepShearedLayer;
+import net.minecraft.client.model.SheepModel;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.SheepRenderer;
-import net.minecraft.client.renderer.entity.model.SheepModel;
-import net.minecraft.entity.passive.SheepEntity;
+import net.minecraft.world.entity.animal.Sheep;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 @Mixin(SheepRenderer.class)
-public abstract class SheepRendererMixin extends MobRenderer<SheepEntity, SheepModel<SheepEntity>> {
+public abstract class SheepRendererMixin extends MobRenderer<Sheep, SheepModel<Sheep>> {
 	
-	public SheepRendererMixin(EntityRendererManager renderManager, SheepModel<SheepEntity> model, float f) {
-		super(renderManager, model, f);
+	public SheepRendererMixin(EntityRendererProvider.Context context, SheepModel<Sheep> model, float f) {
+		super(context, model, f);
 	}
 
-	@Inject(at = @At ("TAIL"), method = "<init>(Lnet/minecraft/client/renderer/entity/EntityRendererManager;)V")
-	private void sheep_consistency_forge_init(EntityRendererManager dispatcher, CallbackInfo info) {
-		this.addLayer(new SheepShearedLayerRenderer(this));
+	@Inject(at = @At("TAIL"), method = "<init>")
+	private void sheep_consistency_forge_init(EntityRendererProvider.Context context, CallbackInfo info) {
+		this.addLayer(new SheepShearedLayer(this, context.getModelSet()));
 	}
 }

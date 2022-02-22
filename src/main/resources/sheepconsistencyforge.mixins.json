@@ -1,10 +1,13 @@
 {
   "required": true,
   "package": "me.jsb.sheepconsistencyforge.mixin",
-  "compatibilityLevel": "JAVA_8",
+  "compatibilityLevel": "JAVA_17",
   "refmap": "sheepconsistencyforge.refmap.json",
   "mixins": [
-	"SheepRendererMixin"
+    "SheepRendererMixin"
   ],
+  "injectors": {
+    "defaultRequire": 1
+  },
   "minVersion": "0.8"
 }
