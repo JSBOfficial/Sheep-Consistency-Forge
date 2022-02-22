@@ -2,7 +2,7 @@
   "required": true,
   "package": "me.jsb.sheepconsistencyforge.mixin",
   "compatibilityLevel": "JAVA_8",
-  "refmap": "sheepconsistencyforge.mixins.json",
+  "refmap": "sheepconsistencyforge.refmap.json",
   "mixins": [
 	"SheepRendererMixin"
   ],
